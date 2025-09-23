@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCDT - Marginalized Communities Dynasty Trust</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --dark: #0f0f23;
+            --light: #fafafa;
+            --gray: #6b7280;
+            --gradient: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #14b8a6 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #cbd5e1;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0f0f23 0%, #1a1a3e 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(20, 184, 166, 0.2) 0%, transparent 50%);
+            animation: pulse 20s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #a78bfa;
+            border: 2px solid #a78bfa;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(167, 139, 250, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+
+        .institution-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 2rem 4rem;
+            justify-items: center;
+            align-items: start;
+            margin-top: 6rem;
+        }
+
+        .institution-grid .custody {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .institution-grid .trust {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .institution-grid .blockchain {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            justify-self: center;
+            margin-top: 2rem;
+            max-width: 440px;
+        }
+
+        @media (max-width: 900px) {
+          .institution-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 2rem;
+          }
+          .institution-grid .custody,
+          .institution-grid .trust,
+          .institution-grid .blockchain {
+            grid-column: 1;
+            grid-row: auto;
+            justify-self: center;
+          }
+          .institution-grid .blockchain {
+            margin-top: 0;
+          }
+        }
+
+        .role-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .role-card:hover::before {
+            opacity: 1;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.6);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: #14b8a6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+            z-index: 10;
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .role-description {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f23 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Marginalized Communities Dynasty Trust</h1>
+            <p class="hero-description">
+                The racial wealth gap continues to threaten the American dream.<br> 
+                Our goal: help families create dynasty trusts that grow a one-time $1,000 deposit for 100 years—so future generations have the financial freedom they deserve.
+            </p>
+            <div class="cta-container">
+                <button class="btn btn-primary" onclick="alert('Coming Soon - Join the waitlist')">Join Waitlist</button>
+                <a href="#current" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Reality Section -->
+    <section id="current" style="background: #0a0a1f; padding: 8rem 2rem;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">The Current Reality</h2>
+            <p class="section-subtitle animate-on-scroll" data-delay="0.1">
+                Wealth gaps persist because those with power control access to the same institutions that built their wealth.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin: 6rem 0; justify-items: center;">
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.2">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Average White Household</p>
+                    <p style="font-size: 3rem; font-weight: 700; color: #e2e8f0;" class="counter" data-target="285000" data-prefix="$">$0</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.3">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Average Marginalized Household</p>
+                    <p style="font-size: 3rem; font-weight: 700; color: #ec4899;" class="counter" data-target="50000" data-prefix="$">$0</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.4">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Wealth Gap</p>
+                    <p style="font-size: 3rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" class="counter" data-target="6" data-suffix=":1">0:1</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 1.25rem; color: #94a3b8; margin-top: 5rem;" class="animate-on-scroll" data-delay="0.5">
+                Closing this gap starts with changing who holds the keys.
+            </p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="solution" style="background: #1a1a3e; padding: 8rem 2rem;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">How Does This Work?</h2>
+            <p class="section-subtitle animate-on-scroll" data-delay="0.1">
+                With MCDT, you can now hold the key to your family's future. Here's how our three coordinated solutions protect and grow your dynasty trust for 100 years.
+            </p>
+
+            <div class="institution-grid">
+                <div class="role-card custody animate-on-scroll" data-delay="0.2">
+                    <div class="step-number">1</div>
+                    <div class="role-icon">💰</div>
+                    <h3 class="role-title">Professional Custody</h3>
+                    <p class="role-description">
+                        MCDT coordinates with major financial custodians who hold your assets in individual accounts with complete asset separation. 
+                        Assets are invested in global index funds with institutional-grade security and regulatory oversight. 
+                        Families receive quarterly reports directly from custodians.
+                    </p>
+                </div>
+
+                <div class="role-card trust animate-on-scroll" data-delay="0.3">
+                    <div class="step-number">2</div>
+                    <div class="role-icon">🏛️</div>
+                    <h3 class="role-title">Community Oversight</h3>
+                    <p class="role-description">
+                       MCDT is a nonprofit organized specifically to serve as co-trustee, overseeing the custodians alongside beneficiary rights. 
+                       Governed by community leaders, legal professionals, and independent auditors, MCDT maintains beneficiary registries, enforces the 100-year lock, and ensures custodian reports are accurately recorded on the blockchain.
+                    </p>
+                </div>
+
+                <div class="role-card blockchain animate-on-scroll" data-delay="0.4">
+                    <div class="step-number">3</div>
+                    <div class="role-icon">🔒</div>
+                    <h3 class="role-title">Public Verification</h3>
+                    <p class="role-description">
+                        As co-trustee, MCDT publishes all dynasty trust balances and custodian audit reports to a blockchain ledger, creating permanent public records that beneficiaries can verify independently. 
+                        This ensures trust transparency and accountability survive for the full 100-year term using blockchain's tamper-proof cryptographic security.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynasty Trust Section -->
+<section style="background: #0a0a1f; padding: 8rem 2rem;">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">What is a Dynasty Trust?</h2>
+        <p class="section-subtitle animate-on-scroll" data-delay="0.1">
+            Dynasty trusts are the proven legal structures that established wealthy families have used for centuries to preserve and transfer wealth across generations.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin: 4rem 0; justify-items: center;">
+            <div class="role-card animate-on-scroll" data-delay="0.2">
+                <div class="role-icon">🏛️</div>
+                <h3 class="role-title">Multi-Generational Duration</h3>
+                <p class="role-description">
+                    Lasts 100+ years, automatically transferring wealth to children, grandchildren, and future descendants without requiring new legal structures.
+                </p>
+            </div>
+
+            <div class="role-card animate-on-scroll" data-delay="0.3">
+                <div class="role-icon">🛡️</div>
+                <h3 class="role-title">Asset Protection</h3>
+                <p class="role-description">
+                    Assets are legally protected from creditors, divorces, and lawsuits that could affect beneficiaries, preserving wealth for intended purposes.
+                </p>
+            </div>
+
+            <div class="role-card animate-on-scroll" data-delay="0.4">
+                <div class="role-icon">💰</div>
+                <h3 class="role-title">Tax Efficiency</h3>
+                <p class="role-description">
+                    Bypasses estate taxes at each generation, keeping more wealth in your family instead of losing 40% to taxes each time wealth transfers.
+                </p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.25rem; color: #94a3b8; margin-top: 5rem;" class="animate-on-scroll" data-delay="0.5">
+            MCDT makes these powerful wealth-building tools accessible to marginalized communities for the first time.
+        </p>
+    </div>
+</section>
+
+    <!-- Historical Proof Section -->
+    <section style="background: #0a0a1f; padding: 8rem 2rem;">
+        <div class="container">
+            <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-align: center; margin-bottom: 5rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2;" class="animate-on-scroll">
+                What If Marginalized Communities Had Access to a Dynasty Trust in 1925?
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin: 6rem 0; justify-items: center;">
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.1">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">1925 Investment</p>
+                    <p style="font-size: 3rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" class="counter" data-target="110" data-prefix="$">$0</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.2">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Century Growth</p>
+                    <p style="font-size: 3rem; font-weight: 700; color: #14b8a6;" class="counter" data-target="2200" data-suffix="x">0x</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2.5rem 2rem;" class="animate-on-scroll stat-card" data-delay="0.3">
+                    <p style="color: #a78bfa; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Today's Gap</p>
+                    <p style="font-size: 3rem; font-weight: 700; color: #e2e8f0;" class="counter" data-target="0" data-prefix="$">$240,000</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 1.25rem; color: #94a3b8; margin-top: 5rem;" class="animate-on-scroll" data-delay="0.4">
+                Just $110 per family in a Dynasty Trust in 1925 would have eliminated today's wealth gap entirely. 
+                MCDT ensures this opportunity isn't missed again for any marginalized community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Next Steps CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Next Steps</h2>
+            <p class="cta-description">
+                Join the MCDT community of families building financial equity. 
+                Get updates on MCDT's progress and be first to know when enrollment opens.
+            </p>
+            <div class="cta-container">
+                <button class="btn btn-primary" onclick="alert('Coming Soon - Join the waitlist')">Join Waitlist</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Improved IntersectionObserver for animated blocks AND counters
+      const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -10% 0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            // Reveal animated content
+            if (entry.target.classList.contains('animate-on-scroll')) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+            // If the target IS a counter, start it
+            if (entry.target.classList.contains('counter') && !entry.target.dataset.animated) {
+              entry.target.dataset.animated = "true";
+              startCounter(entry.target);
+            }
+            // If the target CONTAINS counters (e.g., stat-card), start all inside
+            entry.target.querySelectorAll('.counter').forEach(c => {
+              if (!c.dataset.animated) {
+                c.dataset.animated = "true";
+                startCounter(c);
+              }
+            });
+          }, (delay * 1000));
+        });
+      }, observerOptions);
+
+      // Observe both animated blocks and counters and stat-cards
+      document.querySelectorAll('.animate-on-scroll, .counter, .stat-card').forEach(el => observer.observe(el));
+
+      // Counter animation function
+      function startCounter(element) {
+        const target = parseInt(element.dataset.target, 10);
+        const suffix = element.dataset.suffix || '';
+        const prefix = element.dataset.prefix || '';
+        const duration = 2000;
+        const steps = Math.max(1, Math.floor(duration / 16));
+        let increment, current;
+        
+        // For "Today's Gap", count DOWN from the initial value to target (0)
+        if (element.textContent.replace(/,/g, '').includes('$240000')) {
+          current = 240000;
+          increment = -240000 / steps;
+        } else {
+          current = 0;
+          increment = target / steps;
+        }
+
+        const timer = setInterval(() => {
+          current += increment;
+          
+          // Handle countdown vs count up
+          if (increment < 0 && current <= target) {
+            current = target;
+            clearInterval(timer);
+          } else if (increment > 0 && current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          
+          const formatted = Math.abs(current) >= 1000 ? 
+            Math.floor(Math.abs(current)).toLocaleString() : 
+            Math.floor(Math.abs(current));
+          
+          element.textContent = prefix + formatted + suffix;
+        }, 16);
+      }
+
+      // Set initial state for animated elements
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'all 0.8s ease';
+      });
+
+      // Parallax effect for stat cards
+      document.querySelectorAll('.stat-card').forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-10px) scale(1.02)';
+          card.style.transition = 'all 0.3s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+
+      // Hero section should be visible immediately
+      document.querySelector('.hero').style.opacity = '1';
+      document.querySelector('.hero').style.transform = 'translateY(0)';
+
+      // Fallback: start counters already in view on load
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.counter').forEach(c => {
+          const r = c.getBoundingClientRect();
+          if (r.top >= 0 && r.bottom <= window.innerHeight && !c.dataset.animated) {
+            c.dataset.animated = "true";
+            startCounter(c);
+          }
+        });
+      });
+    </script>
+</body>
+</html>
