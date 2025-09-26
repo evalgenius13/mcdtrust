@@ -109,6 +109,13 @@
             animation: fadeInUp 1s ease-out 0.4s both;
         }
 
+        .cta-description {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem; /* Reduced from 3rem */
+            line-height: 1.8;
+        }
+
         .cta-container {
             display: flex;
             gap: 1.5rem;
@@ -254,27 +261,9 @@
             background: linear-gradient(135deg, #1a1a3e 0%, #0f0f23 100%);
             padding: 8rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
+        
         .cta-content {
-            position: relative;
-            z-index: 10;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -287,13 +276,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1.5rem;
-        }
-
-        .cta-description {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            margin-bottom: 3rem;
-            line-height: 1.8;
         }
 
         .disclaimer {
@@ -399,7 +381,7 @@
                         </div>
                         <div class="feature-item">
                             <strong>Flexible Terms</strong><br>
-                            A tiered structure with lock periods ranging from 5 to 100 years, designed to build investment discipline while accommodating diverse, long-term financial horizons.
+                            A tiered structure with lock periods ranging from 7 to 100 years, designed to build investment discipline while accommodating diverse, long-term financial horizons.
                         </div>
                         <div class="feature-item">
                             <strong>Institutional Efficiency</strong><br>
@@ -439,8 +421,17 @@
                         </p>
                     </div>
                 </div>
-                <div class="disclaimer">
-                    <strong>Implementation Considerations:</strong> This framework leverages existing trust law and securities regulations, supplemented by a public ledger for long-term transparency. Key considerations involve developing standardized reporting protocols and operational systems.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Sustainable Funding Model</h2>
+                <p class="section-subtitle">
+                    The nonprofit trustee is sustained through a transparent, industry-standard revenue-sharing agreement with its brokerage partners, ensuring long-term operational viability without compromising its fiduciary duty.
+                </p>
+                 <div class="disclaimer">
+                    <strong>Operational Note:</strong> This B2B (Business-to-Business) model is critical. The brokerage treats the nonprofit as a single, large institutional client, avoiding the high cost of servicing millions of small individual accounts. The nonprofit manages all user-facing support and advocacy, creating institutional efficiency.
                 </div>
             </div>
         </section>
@@ -474,4 +465,6 @@
     </main>
 </body>
 </html>
+
+
 
