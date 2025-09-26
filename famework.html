@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 90% Project - Investment Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --dark: #0f0f23;
+            --light: #fafafa;
+            --gray: #6b7280;
+            --gradient: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #14b8a6 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #cbd5e1;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0f0f23 0%, #1a1a3e 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(20, 184, 166, 0.2) 0%, transparent 50%);
+            animation: pulse 20s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #a78bfa;
+            border: 2px solid #a78bfa;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(167, 139, 250, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .content-section {
+            padding: 8rem 2rem;
+        }
+        
+        .content-section:nth-of-type(odd) {
+            background: #0a0a1f;
+        }
+
+        .content-section:nth-of-type(even) {
+            background: #1a1a3e;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+        
+        .role-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .role-card:hover::before {
+            opacity: 1;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.6);
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .role-description {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f23 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .disclaimer {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 4rem auto 0;
+            font-size: 0.9rem;
+            color: #a78bfa;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+            border: 2px solid rgba(236, 72, 153, 0.3);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 800px;
+        }
+
+        .highlight-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #ec4899;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-subtitle {
+            font-size: 1rem;
+            color: #a78bfa;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .feature-item {
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-subtitle">An Investment Framework</p>
+                <h1>The 90% Project</h1>
+                <p class="hero-description">
+                    This model demonstrates a structured, scalable approach to democratizing dynasty trust access. By leveraging existing financial infrastructure through strategic partnerships, this framework addresses systemic wealth concentration by expanding access to proven, institutional-quality wealth management strategies.
+                </p>
+                <div class="cta-container">
+                    <a href="#solution" class="btn btn-primary">View The Framework</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="content-section">
+            <div class="container">
+                <h2 class="section-title">The Solution</h2>
+                <p class="section-subtitle">
+                    Accessible dynasty trust structures through nonprofit-brokerage partnerships with flexible commitment periods designed to build disciplined investment behavior.
+                </p>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">Structured Trust Products</h3>
+                    <p class="highlight-subtitle">This model offers standardized trust instruments with features designed for scalability and accessibility.</p>
+                    
+                    <div class="highlight-features">
+                        <div class="feature-item">
+                            <strong>Accessible Entry</strong><br>
+                            Minimum investment thresholds starting at modest amounts to serve a broad market.
+                        </div>
+                        <div class="feature-item">
+                            <strong>Streamlined Process</strong><br>
+                            Simplified, automated account opening to reduce legal complexity and friction.
+                        </div>
+                        <div class="feature-item">
+                            <strong>Flexible Terms</strong><br>
+                            A tiered structure with lock periods ranging from 5 to 100 years, designed to build investment discipline while accommodating diverse, long-term financial horizons.
+                        </div>
+                        <div class="feature-item">
+                            <strong>Institutional Efficiency</strong><br>
+                            Dramatically reduced administrative costs through a standardized partnership model.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Implementation Framework</h2>
+                <p class="section-subtitle">
+                    Strategic partnerships between nonprofit organizations and registered broker-dealers enable scalable dynasty trust access through proven financial infrastructure.
+                </p>
+                <div class="cards-grid">
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">🏦</div>
+                        <h3 class="role-title">Regulated Custody</h3>
+                        <p class="role-description">
+                            Licensed broker-dealers provide custody services, investment management (primarily in low-cost index funds), and regulatory compliance within existing financial frameworks.
+                        </p>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">⚖️</div>
+                        <h3 class="role-title">Fiduciary Governance</h3>
+                        <p class="role-description">
+                            Tax-exempt organizations serve as trustee entities, ensuring fiduciary responsibility, long-term beneficiary advocacy, and mission alignment.
+                        </p>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">🔗</div>
+                        <h3 class="role-title">Independent Verification</h3>
+                        <p class="role-description">
+                            A distributed public ledger creates a permanent, tamper-proof record of all trust activities and audits, ensuring transparency that is independent of any single institution or government.
+                        </p>
+                    </div>
+                </div>
+                <div class="disclaimer">
+                    <strong>Implementation Considerations:</strong> This framework leverages existing trust law and securities regulations, supplemented by a public ledger for long-term transparency. Key considerations involve developing standardized reporting protocols and operational systems.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Expected Outcomes</h2>
+                <p class="section-subtitle">
+                    Structured savings programs with predetermined lock periods cultivate long-term investment behavior while providing access to institutional-quality wealth management strategies.
+                </p>
+                <div class="disclaimer">
+                    <strong>Behavioral Impact:</strong> Lock period structures promote delayed gratification and systematic wealth accumulation, particularly benefiting communities with limited access to traditional wealth management services. Historical market performance suggests significant long-term wealth creation potential through disciplined investment approaches.
+                </div>
+                <div class="disclaimer" style="margin-top: 2rem;">
+                    <strong>Market Considerations:</strong> Past performance does not guarantee future results. All investment products carry inherent market risks. This model represents one approach to addressing wealth concentration through expanded access to proven wealth-building instruments.
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="contact">
+            <div class="cta-content">
+                <h2 class="cta-title">Investment Framework Overview</h2>
+                <p class="cta-description">
+                    This model demonstrates a structured approach to democratizing dynasty trust access through established financial partnerships. The framework addresses wealth concentration through expanded access to institutional wealth management strategies.
+                </p>
+                <div class="cta-container">
+                    <a href="mailto:contact@example.com" class="btn btn-primary">Discuss This Model</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
