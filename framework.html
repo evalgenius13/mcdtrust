@@ -112,7 +112,7 @@
         .cta-description {
             font-size: 1.25rem;
             color: #cbd5e1;
-            margin-bottom: 2rem; /* Reduced from 3rem */
+            margin-bottom: 2rem; 
             line-height: 1.8;
         }
 
@@ -215,8 +215,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            max-width: 400px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .role-card::before {
@@ -255,6 +255,7 @@
         .role-description {
             color: #94a3b8;
             line-height: 1.8;
+            flex-grow: 1;
         }
 
         .cta-section {
@@ -299,8 +300,8 @@
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin: 4rem 0;
         }
 
@@ -311,7 +312,7 @@
             padding: 3rem 2rem;
             text-align: center;
             margin: 4rem auto;
-            max-width: 800px;
+            max-width: 1000px;
         }
 
         .highlight-title {
@@ -329,8 +330,8 @@
 
         .highlight-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
             text-align: left;
         }
@@ -341,6 +342,13 @@
             padding: 1.5rem;
             font-size: 0.9rem;
             color: #cbd5e1;
+        }
+
+        .feature-item .feature-title {
+            font-weight: 700;
+            color: var(--light);
+            display: block;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -361,31 +369,23 @@
 
         <section id="solution" class="content-section">
             <div class="container">
-                <h2 class="section-title">The Solution</h2>
+                <h2 class="section-title">Structured Trust Products</h2>
                 <p class="section-subtitle">
-                    Accessible dynasty trust structures through nonprofit-brokerage partnerships with flexible commitment periods designed to build disciplined investment behavior.
+                    The model offers standardized trust instruments with features designed for scalability, accessibility, and long-term generational wealth creation.
                 </p>
                 
                 <div class="highlight-box">
-                    <h3 class="highlight-title">Structured Trust Products</h3>
-                    <p class="highlight-subtitle">This model offers standardized trust instruments with features designed for scalability and accessibility.</p>
+                    <h3 class="highlight-title">Core Product Attributes</h3>
+                    <p class="highlight-subtitle">A professional, high-level overview of the product's strategic design.</p>
                     
                     <div class="highlight-features">
                         <div class="feature-item">
-                            <strong>Accessible Entry</strong><br>
-                            Minimum investment thresholds starting at modest amounts to serve a broad market.
+                            <strong class="feature-title">Accessible & Efficient</strong>
+                            A streamlined onboarding process with low entry minimums, enabled by a standardized partnership model that reduces administrative costs.
                         </div>
                         <div class="feature-item">
-                            <strong>Streamlined Process</strong><br>
-                            Simplified, automated account opening to reduce legal complexity and friction.
-                        </div>
-                        <div class="feature-item">
-                            <strong>Flexible Terms</strong><br>
-                            A tiered structure with lock periods ranging from 7 to 100 years, designed to build investment discipline while accommodating diverse, long-term financial horizons.
-                        </div>
-                        <div class="feature-item">
-                            <strong>Institutional Efficiency</strong><br>
-                            Dramatically reduced administrative costs through a standardized partnership model.
+                            <strong class="feature-title">Flexible Term Structures</strong>
+                            A tiered structure with lock periods ranging from short-term (7+ years) for foundational goals to multi-generational (100+ years) for legacy building.
                         </div>
                     </div>
                 </div>
@@ -396,28 +396,119 @@
             <div class="container">
                 <h2 class="section-title">Implementation Framework</h2>
                 <p class="section-subtitle">
-                    Strategic partnerships between nonprofit organizations and registered broker-dealers enable scalable dynasty trust access through proven financial infrastructure.
+                    A <strong>directed-trust architecture</strong> with a clear division of labor between independent, professional partners, governed by a strict <strong>Investment Policy Statement (IPS)</strong> and monitored through formal <strong>Service Level Agreements (SLAs).</strong>
                 </p>
                 <div class="cards-grid">
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">⚖️</div>
+                        <h3 class="role-title">Administrative Trustee</h3>
+                        <p class="role-description">
+                            A nonprofit, established as a <strong>Delaware Series Trust</strong> and governed under Delaware law, serves as the administrative trustee. It maintains operational separateness (distinct records, expense allocation) to preserve series liability shields.
+                        </p>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">📊</div>
+                        <h3 class="role-title">Independent Investment Adviser</h3>
+                        <p class="role-description">
+                            A licensed, independent Registered Investment Advisor (RIA) is legally responsible for creating the Investment Policy Statement (IPS), managing the investment strategy, and providing beneficiaries with its Form ADV and policies.
+                        </p>
+                    </div>
                     <div class="role-card">
                         <div class="role-icon" aria-hidden="true">🏦</div>
                         <h3 class="role-title">Regulated Custody</h3>
                         <p class="role-description">
-                            Licensed broker-dealers provide custody services, investment management (primarily in low-cost index funds), and regulatory compliance within existing financial frameworks.
+                            A licensed broker-dealer provides secure custody of all assets, executes trades as directed by the RIA, and ensures full regulatory compliance.
                         </p>
                     </div>
                     <div class="role-card">
-                        <div class="role-icon" aria-hidden="true">⚖️</div>
-                        <h3 class="role-title">Fiduciary Governance</h3>
-                        <p class="role-description">
-                            Tax-exempt organizations serve as trustee entities, ensuring fiduciary responsibility, long-term beneficiary advocacy, and mission alignment.
-                        </p>
-                    </div>
-                    <div class="role-card">
-                        <div class="role-icon" aria-hidden="true">🔗</div>
+                        <div class="role-icon" aria-hidden="true">🛡️</div>
                         <h3 class="role-title">Independent Verification</h3>
                         <p class="role-description">
-                            A distributed public ledger creates a permanent, tamper-proof record of all trust activities and audits, ensuring transparency that is independent of any single institution or government.
+                           The nonprofit publishes quarterly, privacy-first attestations of aggregate positions and audit reports (hashes of SOC 2 Type II / ISO 27001) to create a permanent, auditable trail with no on-chain PII.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Beneficiary Protections & Value</h2>
+                <p class="section-subtitle">The framework is designed with institutional-grade protections and tangible value propositions that survive scrutiny.</p>
+                <div class="highlight-box">
+                     <div class="highlight-features">
+                        <div class="feature-item">
+                            <strong class="feature-title">Spendthrift & Creditor Protection</strong>
+                            All trusts include robust spendthrift clauses and plain-English disclosures detailing creditor protection and tax treatment caveats by state.
+                        </div>
+                        <div class="feature-item">
+                            <strong class="feature-title">Hardship Valve & Early Exit</strong>
+                            Includes provisions for a two-key committee for hardship disbursements and a clear policy for handling early-exit risk, funded by a reserve pool.
+                        </div>
+                        <div class="feature-item">
+                            <strong class="feature-title">Portability & Situs Migration</strong>
+                            The framework includes language to allow for the trust's legal home (situs) to be migrated to adapt to changes in state trust law or family location.
+                        </div>
+                         <div class="feature-item">
+                            <strong class="feature-title">Automatic Glidepaths</strong>
+                            The Investment Policy Statement (IPS) includes automatic asset allocation glidepaths that de-risk the portfolio as a trust nears its distribution phase.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Sustainable Economics & Fee Structure</h2>
+                <p class="section-subtitle">
+                    The model's sustainability is based on a high-volume, low-cost servicing model, creating a viable framework for the underserved 90% market.
+                </p>
+                 <div class="highlight-box">
+                    <h3 class="highlight-title">Unit Economics & Funding</h3>
+                    <div class="highlight-features">
+                        <div class="feature-item">
+                            <strong class="feature-title">Binding All-In Fee Cap (Max 0.50%)</strong>
+                            A transparent, all-in fee cap with any broker credits or affiliated fees auto-rebated directly to beneficiary accounts.
+                        </div>
+                        <div class="feature-item">
+                            <strong class="feature-title">Viable Unit Economics</strong>
+                           Targets initial AUM/series of $2-5k, low CAC (<$10) via B2B channels (credit unions, employers), and a breakeven servicing cost <$12/account/month.
+                        </div>
+                    </div>
+                </div>
+                 <div class="disclaimer">
+                    <strong>Oversight & Termination:</strong> An independent committee will conduct semiannual, third-party audits of fees and best execution. The nonprofit holds termination triggers for non-performance, fee creep, or negative audit findings.
+                 </div>
+            </div>
+        </section>
+
+         <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Risk Management & Governance</h2>
+                <p class="section-subtitle">
+                    A comprehensive risk management strategy protects the organization and its beneficiaries.
+                </p>
+                <div class="cards-grid">
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">📜</div>
+                        <h3 class="role-title">Trustee Protections</h3>
+                        <p class="role-description">
+                            The trust documents include standard exculpation and indemnification provisions for the trustee, which do not cover gross negligence or willful misconduct.
+                        </p>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">🛡️</div>
+                        <h3 class="role-title">Comprehensive Insurance</h3>
+                        <p class="role-description">
+                            The nonprofit will maintain a robust insurance program, including Fiduciary Liability ($10M min), D&O ($5M min), and a fidelity bond per custody rules.
+                        </p>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon" aria-hidden="true">🗣️</div>
+                        <h3 class="role-title">Dispute Resolution</h3>
+                        <p class="role-description">
+                            A clear, multi-step process for handling beneficiary complaints and disputes will be outlined, including mediation and arbitration clauses.
                         </p>
                     </div>
                 </div>
@@ -426,27 +517,29 @@
 
         <section class="content-section">
             <div class="container">
-                <h2 class="section-title">Sustainable Funding Model</h2>
-                <p class="section-subtitle">
-                    The nonprofit trustee is sustained through a transparent, industry-standard revenue-sharing agreement with its brokerage partners, ensuring long-term operational viability without compromising its fiduciary duty.
+                <h2 class="section-title">Key Performance Indicators</h2>
+                 <p class="section-subtitle">
+                    The model's success will be measured against a public dashboard of transparent, accountable metrics.
                 </p>
-                 <div class="disclaimer">
-                    <strong>Operational Note:</strong> This B2B (Business-to-Business) model is critical. The brokerage treats the nonprofit as a single, large institutional client, avoiding the high cost of servicing millions of small individual accounts. The nonprofit manages all user-facing support and advocacy, creating institutional efficiency.
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <div class="container">
-                <h2 class="section-title">Expected Outcomes</h2>
-                <p class="section-subtitle">
-                    Structured savings programs with predetermined lock periods cultivate long-term investment behavior while providing access to institutional-quality wealth management strategies.
-                </p>
-                <div class="disclaimer">
-                    <strong>Behavioral Impact:</strong> Lock period structures promote delayed gratification and systematic wealth accumulation, particularly benefiting communities with limited access to traditional wealth management services. Historical market performance suggests significant long-term wealth creation potential through disciplined investment approaches.
-                </div>
-                <div class="disclaimer" style="margin-top: 2rem;">
-                    <strong>Market Considerations:</strong> Past performance does not guarantee future results. All investment products carry inherent market risks. This model represents one approach to addressing wealth concentration through expanded access to proven wealth-building instruments.
+                 <div class="highlight-box">
+                     <div class="highlight-features">
+                        <div class="feature-item">
+                            <strong class="feature-title">Target AUM per Series</strong>
+                            $2k-$5k initial, ramping to $10k+ over time.
+                        </div>
+                        <div class="feature-item">
+                            <strong class="feature-title">Customer Acquisition Cost (CAC)</strong>
+                            Target less than $10 per account via B2B channels.
+                        </div>
+                        <div class="feature-item">
+                            <strong class="feature-title">Servicing Cost</strong>
+                            Breakeven at less than $12 per account per month.
+                        </div>
+                         <div class="feature-item">
+                            <strong class="feature-title">Beneficiary Support SLA</strong>
+                            A public commitment to a specific complaint resolution timeline and process.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -465,6 +558,4 @@
     </main>
 </body>
 </html>
-
-
 
